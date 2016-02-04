@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.samhita"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+	
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.samhita.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name="com.example.samhita.Onsite_List_Main"
+            android:label="@string/onsite" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.Online_List_Main"
+            android:label="@string/online" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.General_List_Main"
+            android:label="@string/general" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.Contact_List_Main"
+            android:label="@string/contact" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.Mega_Event"
+            android:label="@string/mega_event" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.Welcome"
+            android:label="@string/welcome" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.Create_Account"
+            android:label="@string/welcome1" >
+        </activity>
+    </application>
+
+</manifest>
