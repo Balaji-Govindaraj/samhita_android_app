@@ -11,6 +11,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.app.ActionBar;
+import android.view.MenuItem;
+
  
  
 public class Contact_List_Main extends Activity{
@@ -19,16 +22,18 @@ public class Contact_List_Main extends Activity{
 	String[] itemname ={
 			"ITA Chairman",
 			"ITA Secretary",
-			"Accomodation Incharge",
-			"Pradeep",
-			"Workshop Incharge"
+			"Accomodation-In-charge",
+			"Sponser Coordinator",
+			"Workshop Coordinator",
+			"Event Coordinator"
 		};
 	String[] sub_itemname ={
-			"Name:Sasi Dharan\nPhoneno:8870068020\nMail ID:sasidharan@gmail.com",
-			"Name:Vimal Kumar\nPhoneno:8122107944\nMail ID:vimal.m94@gmail.com",
-			"Name:Sample3\nPhoneno:9888888888\nMail ID:sasidharan@gmail.com",
-			"Phoneno:984243313\nMail ID:compprad@gmail.com",
-			"Name:Sample5\nPhoneno:9888888888\nMail ID:sasidharan@gmail.com"
+			"Name:J.SasiDharan\nPhoneno:8870068020\nMail ID:CHAIRMANITA@MITINIDIA.EDU",
+			"Name:M.Vimal Kumar\nPhoneno:8122107944\nMail ID:SECRETARYITA@MITINDIA.EDU",
+			"Name:A.Kaviyarasu\nPhoneno:9789864587",
+			"Name:R.Kaushik\nPhoneno:8681027488",
+			"Name:Ananth Narayanan\nPhoneno:9444899843",
+			"Name:Badri Narayanan\nPhoneno:9884411961"
 	};
 	Integer[] imgid={
 			R.drawable.phone,
@@ -36,11 +41,16 @@ public class Contact_List_Main extends Activity{
 			R.drawable.phone,
 			R.drawable.phone,
 			R.drawable.phone,
+			R.drawable.phone
 		};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact_main);
+		
+		ActionBar ab = getActionBar(); 
+        ab.setDisplayHomeAsUpEnabled(true);
+
 		
 		Onsite_List adapter=new Onsite_List(this, itemname, imgid,sub_itemname);
 		list=(ListView)findViewById(R.id.list);
@@ -63,25 +73,41 @@ public class Contact_List_Main extends Activity{
 					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:8122107944"));
 					startActivity(intent);
 				}
-				else if(Selecteditem.equals("Accomodation Incharge"))
+				else if(Selecteditem.equals("Accomodation-In-charge"))
 				{
-					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:8122107944"));
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:9789864587"));
 					startActivity(intent);
 				}
-				else if(Selecteditem.equals("Pradeep"))
+				else if(Selecteditem.equals("Sponser Coordinator"))
 				{
-					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:984243313"));
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:8681027488"));
 					startActivity(intent);
 				}
-				else if(Selecteditem.equals("Workshop Incharge"))
+				else if(Selecteditem.equals("Workshop Coordinator"))
 				{
-					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:88122107944"));
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:9444899843"));
 					startActivity(intent);
 				}
-				
+				else if(Selecteditem.equals("Event Coordinator"))
+				{
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:9884411961"));
+					startActivity(intent);
+				}
 				//Toast.makeText(getApplicationContext(), Selecteditem, Toast.LENGTH_SHORT).show();
 				
 			}
 		});
+
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) { 
+	    switch (item.getItemId()) {
+	        case android.R.id.home:
+	            this.finish();
+	        	// app icon in action bar clicked; go home
+	            return true;
+	            default:
+	            return super.onOptionsItemSelected(item); 
+	    }
 	}
 }

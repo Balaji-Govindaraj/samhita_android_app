@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="fill_parent" 
+    android:background="@drawable/back1"
+    android:fillViewport="true">
  
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" 
-    android:background="#FFF"
+    
+    
     >
 	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
+		android:layout_marginTop="25dp"
+		android:textStyle="bold"
 		android:gravity="center_horizontal">
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
     	android:textAppearance="?android:attr/textAppearanceLarge"
+    	android:textColor="#FFF"
+    	android:textStyle="bold"
         android:text="@string/mega_event" />
 	 
     </LinearLayout>
@@ -35,15 +42,56 @@
 	       android:contentDescription="@string/mega_event"
     	    android:layout_width="200dp"
     	    android:layout_height="200dp"
-    	    android:src="@drawable/mega"
+    	    android:src="@drawable/king"
 			android:padding="5dp" />
     </LinearLayout>
+    
+	<Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginTop="20dp"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_border"
+        android:id="@+id/buttonUpload" />
 	    
-    <TextView
+    <!-- TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="18dp"
         android:text="@string/mega_event_content" />
-	 	 
+    
+    
+	 <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"
+        android:text="Organizer:Rahul Malik" />
+     <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="#FFF"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:text="Phone Number:9445898428" />
+      <TextView
+        android:id="@+id/textView5"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:text="Mail ID:mallikuniqkmails@gmail.com" />-->
 </LinearLayout>
 </ScrollView>

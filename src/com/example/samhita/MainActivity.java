@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.example.samhita.SimpleGestureFilter.SimpleGestureListener;
@@ -38,7 +42,7 @@ public class MainActivity extends ActionBarActivity implements SimpleGestureList
 	Animation slide_in_right, slide_out_left;
 	ViewFlipper viewFlipper;*/
 	 private SimpleGestureFilter detector;
-
+	 private TextView textview1;
 	int mPosition = -1;	
 	String mTitle = "";
 	
@@ -70,27 +74,44 @@ public class MainActivity extends ActionBarActivity implements SimpleGestureList
 	final private String FLAG = "flag";	
 	final private String COUNT = "count";
 	
-	ImageView img1;
-	ImageView img2;
+	TextView textview2;
 	private ViewFlipper viewFlipper;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 			
 		super.onCreate(savedInstanceState);
-		 //overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
-			
 		setContentView(R.layout.activity_main);
-		 viewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
-		 img2=(ImageView)findViewById(R.id.imageView2);
+
+		textview1=(TextView)findViewById(R.id.MarqueeText);
+		textview2=(TextView)findViewById(R.id.MarqueeText1);
+		if(isNetworkAvailable())
+    	{
+    		try
+    		{
+    			new Aync_data_set_event1(this,textview1).execute("http://balaji001.netne.net/android/android/notification1.php");
+    			new Aync_data_set_event1(this,textview2).execute("http://balaji001.netne.net/android/android/notification2.php");
+    		//	String text1=new Aync_data_set_event1(this,textview1).execute("http://balaji001.netne.net/android/android/notification1.php").get();
+    		//	String text2=new Aync_data_set_event1(this,textview1).execute("http://balaji001.netne.net/android/android/notification2.php").get();    		
+    		//	textview1.setText(text1);
+    		//	textview2.setText(text2);
+    			Toast.makeText(getApplicationContext(),"Use Double Tap to Move Next Page",Toast.LENGTH_SHORT).show();
+    		}
+    		catch(Exception e){}
+    	}
+    	else
+    	{
+    		textview1.setText("");
+    		textview2.setText("");
+    		Toast.makeText(getApplicationContext(),"Use Double Tap to Move Next Page.\nPlease Connect to Internet.",Toast.LENGTH_LONG).show();
+    	}
+		
+		textview1.setSelected(true);
+		textview2.setSelected(true);
+		
+		
+		 
 		 detector = new SimpleGestureFilter(this,this);
 		 
-		/*img1=(ImageView)findViewById(R.id.img1);
-		img1.setBackgroundResource(R.drawable.sequel_scholars);
-		animation=AnimationUtils.loadAnimation(this,R.anim.anim_slide_out_right);
-		img1.startAnimation(animation);*/
-		//animation=(AnimationDrawable)ii.getBackground();
-		//animation.start();
-		// Getting an array of country names
 		mCountries = getResources().getStringArray(R.array.countries);
 		
 		// Title of the activity
@@ -180,21 +201,25 @@ public class MainActivity extends ActionBarActivity implements SimpleGestureList
 				 {
 					 Intent intent1=new Intent(getApplicationContext(),General_List_Main.class);
 					 startActivity(intent1);
+					 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
 				 }
 				 else if(position==4)
 				 {
 					 Intent intent1=new Intent(getApplicationContext(),Mega_Event.class);
 					 startActivity(intent1); 
+					 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
 				 }
 				 else if(position==5) 
 				 { 
-					// Intent intent1=new Intent(getApplicationContext(),Welcome.class);
-					// startActivity(intent1); 
+					 Intent intent1=new Intent(getApplicationContext(),Workshop_List_Main.class);
+					 startActivity(intent1); 
+					 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
 				 }
 				 else if(position==6)
 				 {
 					 Intent intent1=new Intent(getApplicationContext(),Contact_List_Main.class);
 					 startActivity(intent1); 
+					 overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
 				 }
 				/* else{ // Show message box for countries : 5 to 9				
 					Toast.makeText(getApplicationContext(), mCountries[position], Toast.LENGTH_LONG).show();
@@ -229,52 +254,37 @@ public class MainActivity extends ActionBarActivity implements SimpleGestureList
 	      switch (direction) {
 	      
 	      case SimpleGestureFilter.SWIPE_RIGHT : 
-	    	  if (viewFlipper.getDisplayedChild() == 0)
-	    		  break;
-	    	  img2.setImageResource(R.drawable.zoho);
-		  	  animation=AnimationUtils.loadAnimation(this,R.anim.anim_slide_out_right);
-		  	  img2.startAnimation(animation);
-	    	  viewFlipper.setInAnimation(this, R.anim.anim_slide_in_left);
-	    	  viewFlipper.setOutAnimation(this, R.anim.anim_slide_out_right);
-	    	  viewFlipper.showNext();
-	    	
-	    	  //img2=(ImageView)findViewById(R.id.img1);
-		  	  
-		  		
-	    	/*setContentView(R.layout.main_second);
-	    	img1=(ImageView)findViewById(R.id.img1);
-	  		img1.setBackgroundResource(R.drawable.sequel_scholars);
-	  		animation=AnimationUtils.loadAnimation(this,R.anim.anim_slide_out_right);
-	  		img1.startAnimation(animation);
-	    	  str = "Swipe Right";*/
+	    	  
+	    	  Intent iii1=new Intent(MainActivity.this,MainActivity1.class);
+		  	  startActivity(iii1);
+		  	overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
 	          break;
 	      case SimpleGestureFilter.SWIPE_LEFT :  
-	    	  if (viewFlipper.getDisplayedChild() == 1)
-	    		  break;
-	    	  
-	    	  img2.setImageResource(R.drawable.zoho);
-		  	  animation=AnimationUtils.loadAnimation(this,R.anim.anim_slide_out_right);
-		  	  img2.startAnimation(animation);
-	    	  
-	    	  viewFlipper.setInAnimation(this, R.anim.anim_slide_in_left);
-	    	  viewFlipper.setOutAnimation(this, R.anim.anim_slide_out_right);
-	    	  viewFlipper.showPrevious();
+	    	  Intent iii2=new Intent(MainActivity.this,MainActivity1.class);
+		  	  startActivity(iii2);
+		  	overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
 	    	  break;
 	    	  
 	      case SimpleGestureFilter.SWIPE_DOWN :  
-	    	  str = "Swipe Down";
-	          Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-	      	   break;
+	    	/*  Intent iii3=new Intent(MainActivity.this,MainActivity1.class);
+		  	  startActivity(iii3);
+		  	overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);*/
+		  	  
+		  	  break;
 	      case SimpleGestureFilter.SWIPE_UP :    
-	    	  str = "Swipe Up";
-	          Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-	      	  break;
+	    	/*  Intent iii4=new Intent(MainActivity.this,MainActivity1.class);
+		  	  startActivity(iii4);
+		  	overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);*/
+		  	  break;
 	      }
 	     }
 	      
 	     @Override
 	     public void onDoubleTap() {
-	        Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
+	    	  Intent iii5=new Intent(MainActivity.this,MainActivity1.class);
+		  	  startActivity(iii5);
+		  	overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_right);
+//	        Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
 	     }
 	          
 	     
@@ -305,16 +315,20 @@ public class MainActivity extends ActionBarActivity implements SimpleGestureList
 		String count = item.get(COUNT);
 		item.remove(COUNT);
 		if(count.equals("")){
-			count = "  1  ";
+			count = "";
 		}else{
-			int cnt = Integer.parseInt(count.trim());
-			cnt ++;
-			count = "  " + cnt + "  ";
+			//int cnt = Integer.parseInt(count.trim());
+			//cnt ++;
+			count = "";
 		}				
 		item.put(COUNT, count);				
 		mAdapter.notifyDataSetChanged();
 	}
-	
+	private boolean isNetworkAvailable() {
+	    ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+	    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+	}
 	public void showFragment(int position){
 		
 		//Currently selected country

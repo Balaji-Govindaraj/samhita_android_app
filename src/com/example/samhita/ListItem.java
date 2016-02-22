@@ -5,7 +5,8 @@ public class ListItem {
 	private String url;
 	private String mt;
 	private String st;
-
+	private String tel;
+	
 	public String getUrl() {
 		return url;
 	}
@@ -22,6 +23,13 @@ public class ListItem {
 		this.mt = mt;
 	}
 
+	public String gettel() {
+		return tel;
+	}
+	public void settel(String tel) {
+		this.tel = tel;
+	}
+	
 	public String getst() {
 		return st;
 	}

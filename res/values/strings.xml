@@ -19,14 +19,25 @@
     <string name="mega_event_content">Technical Discussions and Interviews with winners and runners of individual events</string>
     
     <string name="string_choose_file">choose_file</string>
-	<string name="string_upload_image">Create Account</string>
+	<string name="string_upload_image">Register For Samhita</string>
 	<string name="string_view_image">Registered Users</string>
-	
-	<string name="user">USERNAME</string>
-	<string name="pass">PASSWORD</string>
-	<string name="mailid">MAIL ID</string>
-	<string name="phoneno">PHONENO</string>
+	<string name="string_register">Register</string>
+	<string name="user">Username</string>
+	<string name="pass">Password</string>
+	<string name="mailid">Mail Id</string>
+	<string name="phoneno">Phone Number</string>
+    <string name="department">Department</string>
+    <string name="year">Year</string>
+    <string name="college">college</string>
+    <string name="Results">Results</string>
     
+    <string name="workshop">Workshop Samhita 2k16</string>
+    <string name="android_workshop">Android Workshop Registration Samhita 2k16</string>
+    <string name="python_workshop">Python Workshop Registration Samhita 2k16</string>
+    <string name="iot_workshop">IOT Workshop Registration Samhita 2k16</string>
+    <string name="video_workshop">Video Analysis Workshop Registration Samhita 2k16</string>
+    <string name="network_workshop">Network Workshop Registration Samhita 2k16</string>
+    <string name="hacking_workshop">Ethical Hacking Workshop Registration Samhita 2k16</string>
     <string-array name="countries">
         <item>Create Account</item>
         <item>Onsite Events</item>

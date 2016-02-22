@@ -54,6 +54,54 @@
             android:name="com.example.samhita.Create_Account"
             android:label="@string/welcome1" >
         </activity>
+        <activity
+            android:name="com.example.samhita.Workshop_List_Main"
+            android:label="@string/workshop" >
+        </activity>
+         <activity
+            android:name="com.example.samhita.Android_Workshop"
+            android:label="@string/android_workshop" >
+        </activity>
+         <activity
+            android:name="com.example.samhita.Python_Workshop"
+            android:label="@string/python_workshop" >
+        </activity>
+         <activity
+            android:name="com.example.samhita.IOT_Workshop"
+            android:label="@string/iot_workshop" >
+        </activity>
+         <activity
+            android:name="com.example.samhita.Video_Workshop"
+            android:label="@string/video_workshop" >
+        </activity>
+         <activity
+            android:name="com.example.samhita.Network_Workshop"
+            android:label="@string/network_workshop" >
+        </activity>
+         <activity
+            android:name="com.example.samhita.Hacking_Workshop"
+            android:label="@string/hacking_workshop" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.Event_Result"
+            android:label="@string/Results" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.MainActivity1"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.samhita.Events_Template"
+            android:label="@string/app_name" >
+        </activity>
+          <activity
+            android:name="com.example.samhita.Events_Template_Onsite"
+            android:label="@string/app_name" >
+        </activity>
+          <activity
+            android:name="com.example.samhita.Events_Template_General"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

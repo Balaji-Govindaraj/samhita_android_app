@@ -2,6 +2,7 @@ package com.example.samhita;
 
 import java.util.ArrayList;
 
+import android.app.ActionBar;
 import android.app.Activity; 
 import android.app.ProgressDialog;
 import android.app.LauncherActivity.ListItem;
@@ -13,6 +14,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle; 
 import android.view.Menu; 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,6 +37,10 @@ public class Welcome extends Activity{
 	{ 
 		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.activity_welcome);
+
+		ActionBar ab = getActionBar(); 
+        ab.setDisplayHomeAsUpEnabled(true);
+
 		out=(ListView)findViewById(R.id.out);
 		ListView listView = (ListView) findViewById(R.id.out);
     	if(isNetworkAvailable())
@@ -43,7 +49,7 @@ public class Welcome extends Activity{
     		try
     		{
     	//		String success=new Async_data_set(this,listView).execute("http://balaji001.netne.net/android/select.php").get();
-    			new Async_data_set(this,listView).execute("http://balaji001.netne.net/android/select.php");
+    			new Async_data_set(this,listView).execute("http://balaji001.netne.net/android/android/select.php");
     		
     		}
     		catch(Exception e){}
@@ -65,7 +71,17 @@ public class Welcome extends Activity{
 		getMenuInflater().inflate(R.menu.main, menu); 
 		return true; 
 	} 
-	
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) { 
+	    switch (item.getItemId()) {
+	        case android.R.id.home:
+	            this.finish();
+	        	// app icon in action bar clicked; go home
+	            return true;
+	            default:
+	            return super.onOptionsItemSelected(item); 
+	    }
+	}
 }
 /*
  class loading extends AsyncTask<String,Void,String>
